@@ -14,12 +14,12 @@ try:
     with open(config_path, 'r') as f:
         config = json.load(f)
         
-    host = config.get('obs_host', 'localhost')
-    port = config.get('obs_port', 4455)
-    password = config.get('obs_password')
+    host = config.get('host', 'localhost')
+    port = config.get('port', 4455)
+    password = config.get('password')
     
     if not password:
-        raise ValueError("obs_password not found in config.json")
+        raise ValueError("password not found in config.json")
 
 except FileNotFoundError:
     print(f"Error: config.json not found at {config_path}")

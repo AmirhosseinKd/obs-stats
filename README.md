@@ -1,0 +1,74 @@
+OBS Stats Display
+
+This simple Python script connects to your OBS Studio instance via WebSocket and prints the current status, including:
+
+Recording Status: (🔴 Recording / zz Idle)
+
+Recording Timer: (HH:MM:SS)
+
+Current Scene Name
+
+It is designed to be used with status bars (like Polybar, i3blocks, or tmux) or simply as a CLI tool.
+
+Prerequisites
+
+OBS Studio installed.
+
+OBS WebSocket Server enabled:
+
+Open OBS.
+
+Go to Tools -> WebSocket Server Settings.
+
+Check Enable WebSocket server.
+
+Note your Port (default 4455) and Server Password.
+
+Installation
+
+Clone this repository or download the files.
+
+Install the required Python packages:
+
+pip install -r requirements.txt
+
+
+Configuration
+
+For security reasons, your actual credentials are not stored in the code.
+
+Rename the example configuration file:
+
+Rename config.example.json to config.json.
+
+Open config.json and enter your details:
+
+{
+    "obs_host": "localhost",
+    "obs_port": 4455,
+    "obs_password": "YOUR_OBS_PASSWORD_HERE"
+}
+
+
+Note: The config.json file is ignored by Git to prevent your password from being uploaded. Always keep your secrets local!
+
+Usage
+
+Run the script using Python:
+
+python obs_stats.py
+
+
+Output Examples
+
+Idle: zz 00:00 | Scene Name
+
+Recording: 🔴 01:23 | Gameplay
+
+Troubleshooting
+
+"OBS Offline": Ensure OBS is running and the WebSocket server is enabled.
+
+"Authentication Failed": Double-check the password in config.json.
+
+"config.json not found": Ensure you have renamed the example file and it is in the same folder as the script.
