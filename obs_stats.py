@@ -3,10 +3,15 @@ from obswebsocket import obsws, requests
 import datetime
 import json
 import sys
+import os
 
 # --- LOAD CONFIGURATION ---
 try:
-    with open('config.json', 'r') as f:
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    config_path = os.path.join(script_dir, 'config.json')
+
+    with open(config_path, 'r') as f:
         config = json.load(f)
         
     host = config.get('obs_host', 'localhost')
@@ -17,7 +22,7 @@ try:
         raise ValueError("obs_password not found in config.json")
 
 except FileNotFoundError:
-    print("Error: config.json not found")
+    print(f"Error: config.json not found at {config_path}")
     sys.exit(1)
 except Exception as e:
     print(f"Config Error: {e}")
