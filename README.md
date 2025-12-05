@@ -2,7 +2,7 @@
 
 This simple Python script connects to your OBS Studio instance via WebSocket and prints the current status, including:
 
-* **Recording Status:** (🔴 Recording / zz Idle)  
+* **Recording Status:** (🔴 Recording / ⏸️ Paused / zz Idle)  
 * **Recording Timer:** (HH:MM:SS)  
 * **Current Scene Name**
 
@@ -48,7 +48,7 @@ python obs\_stats.py
 
 * **Idle:** zz 00:00 | Scene Name  
 * **Recording:** 🔴 01:23 | Gameplay
-
+* **Paused:** ⏸️ 01:23 | Gameplay
 ## **Troubleshooting**
 
 * **"OBS Offline":** Ensure OBS is running and the WebSocket server is enabled.  
