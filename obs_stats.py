@@ -1,11 +1,27 @@
 #!/usr/bin/env python3
 from obswebsocket import obsws, requests
 import datetime
+import json
+import sys
 
-# --- CONFIGURATION ---
-host = "localhost"
-port = 4455
-password = "oLb02O2uTzpcUcgE" # Put your OBS password here
+# --- LOAD CONFIGURATION ---
+try:
+    with open('config.json', 'r') as f:
+        config = json.load(f)
+        
+    host = config.get('obs_host', 'localhost')
+    port = config.get('obs_port', 4455)
+    password = config.get('obs_password')
+    
+    if not password:
+        raise ValueError("obs_password not found in config.json")
+
+except FileNotFoundError:
+    print("Error: config.json not found")
+    sys.exit(1)
+except Exception as e:
+    print(f"Config Error: {e}")
+    sys.exit(1)
 # ---------------------
 
 try:
