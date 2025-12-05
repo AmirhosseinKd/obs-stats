@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from obswebsocket import obsws, requests
 import datetime
 import json
